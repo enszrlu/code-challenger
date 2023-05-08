@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import './globals.css';
+import Footer from '@/components/Footer';
 
 export const metadata = {
     title: 'Code Challenger',
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
             <body>
                 <Header></Header>
                 {children}
+                <Footer></Footer>
             </body>
         </html>
     );

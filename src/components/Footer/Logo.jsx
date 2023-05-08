@@ -11,20 +11,10 @@ function Logo() {
             className="flex items-center  space-x-2  cursor-pointer w-fit"
             onClick={() => router.push('/')}
         >
-            <div className="relative h-12 w-12">
+            <div className="relative h-8 w-8">
                 <Image src="/logos/icon.png" fill className="object-fill" alt="Logo"></Image>
             </div>
-            <TypeAnimation
-                sequence={[
-                    'Code', // Types 'Code'
-                    500, // Waits 1s
-                    'Code Challenger' // types 'Challenger'
-                ]}
-                wrapper="h1"
-                cursor={true}
-                repeat={false}
-                className="text-2xl "
-            />
+            <h1 className="text-xl">Code Challenger</h1>
         </div>
     );
 }
