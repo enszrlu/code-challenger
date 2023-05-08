@@ -1,0 +1,32 @@
+'use client';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { TypeAnimation } from 'react-type-animation';
+
+function Logo() {
+    const router = useRouter();
+    return (
+        <div
+            className="flex items-center  space-x-2  cursor-pointer flex-1"
+            onClick={() => router.push('/')}
+        >
+            <div className="relative h-12 w-12">
+                <Image src="/logos/icon.png" fill className="object-fill" alt="Hulu Logo"></Image>
+            </div>
+            <TypeAnimation
+                sequence={[
+                    'Code', // Types 'Code'
+                    500, // Waits 1s
+                    'Code Challenger' // types 'Challenger'
+                ]}
+                wrapper="h1"
+                cursor={true}
+                repeat={false}
+                className="text-2xl "
+            />
+        </div>
+    );
+}
+
+export default Logo;
