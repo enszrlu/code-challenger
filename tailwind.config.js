@@ -10,7 +10,9 @@ module.exports = {
         extend: {
             colors: {
                 primary: '#26b4e3',
-                secondary: '#ab2bda'
+                secondary: '#ab2bda',
+                html: '#21da27',
+                css: '#fb932b'
             },
             fontFamily: {
                 RobotoMono: ['RobotoMono', 'monospace']
@@ -32,5 +34,5 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [require('@tailwindcss/line-clamp')]
 };

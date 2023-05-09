@@ -17,11 +17,11 @@ function Logo() {
             <TypeAnimation
                 sequence={[
                     'Code', // Types 'Code'
-                    500, // Waits 1s
+                    500, // Waits 500ms
                     'Code Challenger' // types 'Challenger'
                 ]}
                 wrapper="h1"
-                cursor={true}
+                cursor={false}
                 repeat={false}
                 className="text-2xl "
             />

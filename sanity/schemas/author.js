@@ -9,6 +9,11 @@ export default {
             type: 'string'
         },
         {
+            name: 'username',
+            title: 'User Name',
+            type: 'string'
+        },
+        {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
@@ -33,17 +38,9 @@ export default {
             ]
         },
         {
-            name: 'bio',
-            title: 'Bio',
-            type: 'array',
-            of: [
-                {
-                    title: 'Block',
-                    type: 'block',
-                    styles: [{ title: 'Normal', value: 'normal' }],
-                    lists: []
-                }
-            ]
+            name: 'image_url',
+            title: 'Image URL',
+            type: 'url'
         }
     ],
     preview: {

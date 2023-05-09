@@ -1,11 +1,11 @@
 export default {
-    name: 'category',
-    title: 'Category',
+    name: 'assets',
+    title: 'Assets',
     type: 'document',
     fields: [
         {
             name: 'name',
-            title: 'Category Name',
+            title: 'Asset Name',
             type: 'string'
         }
     ]
