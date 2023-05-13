@@ -5,7 +5,6 @@ import PreviewSuspense from '@/components/PreviewSuspense';
 import { draftMode } from 'next/headers';
 import ChallengeList from '@/components/ChallengeList';
 import PreviewChallenges from '@/components/PreviewChallenges';
-import ChallengeHeader from '@/components/ChallengeHeader';
 
 const query = groq`
     *[_type == "challenge"] {
@@ -13,7 +12,7 @@ const query = groq`
         author->,
         categories[]->,
         difficulty->
-    } | order(_createdAt desc)
+    } | order(publishedAt desc)
 `;
 
 export default async function Challenges() {
@@ -25,15 +24,9 @@ export default async function Challenges() {
         );
     }
     const challenges = await client.fetch(query);
+
     if (!challenges.length) {
         return <div>Loading...</div>;
     }
-    return (
-        <div>
-            {/* Challenges Header */}
-            <ChallengeHeader></ChallengeHeader>
-            {/* Challenges */}
-            <ChallengeList challenges={challenges}></ChallengeList>
-        </div>
-    );
+    return <ChallengeList challenges={challenges}></ChallengeList>;
 }

@@ -23,7 +23,7 @@ function Challenge({ challenge }) {
                         {/* Categories */}
                         <div className="flex gap-3">
                             {challenge.categories.map((category) => (
-                                <Category category={category.name} key={category}></Category>
+                                <Category category={category.name} key={category._id}></Category>
                             ))}
                         </div>
                         {/* Difficulty */}
