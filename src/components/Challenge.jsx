@@ -18,7 +18,12 @@ function Challenge({ challenge }) {
                     ></Image>
                 </div>
                 <div className="flex flex-col p-5 gap-5">
-                    <h1 className="w-full text-center text-2xl font-bold">{challenge.title}</h1>
+                    <h1
+                        className="w-full text-center text-2xl font-bold h-24 line-clamp-3"
+                        title={challenge.title}
+                    >
+                        {challenge.title}
+                    </h1>
                     <div className="flex justify-between items-center">
                         {/* Categories */}
                         <div className="flex gap-3">
