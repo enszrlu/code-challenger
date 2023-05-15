@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import '../globals.css';
 import Footer from '@/components/Footer';
+import ThemeProvider from '@/components/ThemeProvider';
 
 export const metadata = {
     title: 'Code Challenger',
@@ -11,10 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="flex flex-col min-h-screen dark:bg-slate-700 transition duration-500 ease-in-out">
-                <Header></Header>
-                <div className="flex-1">{children}</div>
-                <Footer></Footer>
+            <body className="flex flex-col min-h-screen dark:bg-slate-700">
+                <ThemeProvider>
+                    <Header></Header>
+                    <div className="flex-1">{children}</div>
+                    <Footer></Footer>
+                </ThemeProvider>
             </body>
         </html>
     );

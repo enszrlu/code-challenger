@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 function Info() {
     return (
-        <div className="gap-10 flex flex-col items-center p-10 text-center dark:bg-slate-700 dark:text-gray-200 transition duration-500 ease-in-out select-none border-b-2 border-gray-400 shadow-sm dark:border-slate-950">
+        <div className="gap-10 flex flex-col items-center p-10 text-center dark:bg-slate-700 dark:text-gray-200 select-none border-b-2 border-gray-400 shadow-sm dark:border-slate-950">
             <div className="relative h-64 w-64 animate-bounce-less">
                 <Image src="/icons/rocket.png" fill className="object-fill" alt="Logo"></Image>
             </div>

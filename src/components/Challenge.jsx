@@ -8,7 +8,7 @@ import ClientSideRoute from './Challenge/ClientSideRoute';
 function Challenge({ challenge }) {
     return (
         <ClientSideRoute route={`/challenge/${challenge.slug.current}`}>
-            <div className="flex flex-col group cursor-pointer rounded-2xl border-2 overflow-hidden shadow-lg dark:bg-slate-900 dark:text-gray-200 transition duration-500 ease-in-out h-full dark:border-slate-900">
+            <div className="flex flex-col group cursor-pointer rounded-2xl border-2 overflow-hidden shadow-lg dark:bg-slate-900 dark:text-gray-200 h-full dark:border-slate-900">
                 <div className="relative w-full h-64 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                     <Image
                         className="object-cover object-top lg:object-top"

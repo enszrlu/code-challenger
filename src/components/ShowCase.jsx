@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function ShowCase() {
     return (
-        <div className="bg-white dark:bg-slate-800 dark:text-gray-200 transition duration-500 ease-in-out select-none flex border-b-2 border-gray-400 shadow-sm dark:border-slate-950">
+        <div className="bg-white dark:bg-slate-800 dark:text-gray-200 select-none flex border-b-2 border-gray-400 shadow-sm dark:border-slate-950">
             <div className="flex flex-col items-center text-center py-10 px-6 gap-10 flex-1 ">
                 <TypeAnimation
                     sequence={['Design', 1000, 'Develop', 1000, 'Challenge Yourself', 4000]}

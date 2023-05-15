@@ -69,8 +69,8 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
     };
 
     return (
-        <div className="flex w-full px-10 justify-between items-center border-2 bg-gray-100 dark:bg-gray-300 transition duration-500 ease-in-out">
-            <div className="text-primary font-bold text-lg md:text-2xl dark:text-secondary transition duration-500 ease-in-out">
+        <div className="flex w-full px-10 justify-between items-center border-2 bg-gray-100 dark:bg-gray-300">
+            <div className="text-primary font-bold text-lg md:text-2xl dark:text-secondary">
                 CHALLENGES
             </div>
             <div className="flex text-slate-800">
@@ -81,7 +81,7 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
                 >
                     SORT BY
                     <ChevronUpIcon
-                        className={`h-6 w-6 fill-primary dark:fill-secondary transition duration-500 ease-in-out ${
+                        className={`h-6 w-6 fill-primary dark:fill-secondary ${
                             open && !popoverType && 'rotate-180'
                         } `}
                     />
@@ -93,7 +93,7 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
                 >
                     FILTER BY
                     <ChevronUpIcon
-                        className={`h-6 w-6 fill-primary dark:fill-secondary transition duration-500 ease-in-out ${
+                        className={`h-6 w-6 fill-primary dark:fill-secondary ${
                             open && popoverType && 'rotate-180'
                         } `}
                     />

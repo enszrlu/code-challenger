@@ -6,35 +6,31 @@ import { useState, useEffect } from 'react';
 import HeaderNavigation from './Header/HeaderNavigation';
 import Logo from './Header/Logo';
 import UserPanel from './Header/UserPanel';
+import { useTheme } from 'next-themes';
 
 function Header() {
     const [isDarkMode, setDarkMode] = useState(null);
+    const { theme, setTheme } = useTheme();
 
     const toggleDarkMode = (checked) => {
         setDarkMode(checked);
     };
 
     useEffect(() => {
-        if (isDarkMode === null) {
-            const localTheme = localStorage.getItem('color-theme');
-            if (localTheme) {
-                setDarkMode(localTheme === 'dark');
-            } else {
-                setDarkMode(false);
-            }
+        if (isDarkMode !== null) {
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            setTheme(isDarkMode ? 'dark' : 'light');
+            console.log('theme: ', localStorage.getItem('theme'));
         } else {
-            localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
-            if (isDarkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
+            if (theme === 'dark') {
+                setDarkMode(true);
             }
         }
     }, [isDarkMode]);
 
     return (
         <>
-            <div className="fixed flex flex-col w-full items-center p-2 shadow-xl border-b-2 border-b-gray-300 dark:border-b-slate-950 dark:bg-slate-900 bg-white dark:text-white transition duration-500 ease-in-out select-none z-50">
+            <div className="fixed flex flex-col w-full items-center p-2 shadow-xl border-b-2 border-b-gray-300 dark:border-b-slate-950 dark:bg-slate-900 bg-white dark:text-white select-none z-50">
                 <div className="flex w-full justify-between items-center gap-10">
                     {/* Logo */}
                     <div className="flex-1">

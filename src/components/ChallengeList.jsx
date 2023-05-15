@@ -86,7 +86,7 @@ function ChallengeList({ challenges: challengesProps }) {
                 difficulties={difficulties}
                 categories={categories}
             ></ChallengeHeader>
-            <div className="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 dark:bg-slate-700 transition duration-500 ease-in-out p-10 gap-5">
+            <div className="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 dark:bg-slate-700 p-10 gap-5">
                 {challenges.length > 0 ? (
                     challenges.map((challenge) => (
                         <Challenge challenge={challenge} key={challenge._id}></Challenge>
