@@ -20,7 +20,6 @@ function Header() {
         if (isDarkMode !== null) {
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
             setTheme(isDarkMode ? 'dark' : 'light');
-            console.log('theme: ', localStorage.getItem('theme'));
         } else {
             if (theme === 'dark') {
                 setDarkMode(true);

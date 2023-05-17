@@ -23,6 +23,10 @@ export default async function Challenges() {
             </PreviewSuspense>
         );
     }
+
+    // add 5 second delay to simulate slow connection
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
+
     const challenges = await client.fetch(query);
 
     if (!challenges.length) {

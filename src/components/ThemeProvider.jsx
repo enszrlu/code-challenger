@@ -10,7 +10,6 @@ function ThemeProviderComponent({ children }) {
     // read localStorage to set theme
     useEffect(() => {
         const localTheme = localStorage.getItem('theme');
-        console.log('localTheme: ', localTheme);
         if (localTheme) {
             setTheme(localTheme);
         }
