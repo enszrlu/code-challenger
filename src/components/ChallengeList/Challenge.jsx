@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-import { urlFor } from '../../lib/urlFor';
-import Category from './Challenge/Category';
-import Difficulty from './Challenge/Difficulty';
-import ClientSideRoute from './Challenge/ClientSideRoute';
+import { urlFor } from '../../../lib/urlFor';
+import Category from './Category';
+import Difficulty from './Difficulty';
+import ClientSideRoute from './ClientSideRoute';
 
 function Challenge({ challenge }) {
     return (

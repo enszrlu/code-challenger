@@ -6,13 +6,16 @@ import { client } from '../../../../../lib/sanity.client';
 // import PreviewChallenges from '@/components/PreviewChallenges';
 import { PortableText } from '@portabletext/react';
 import { RichTextComponent } from '@/components/ChallengePage/RichTextComponent';
+import ChallengePost from '@/components/ChallengePage/ChallengePost';
 
 const query = groq`
     *[_type == "challenge" && slug.current == $slug][0] {
         ...,
         author->,
         categories[]->,
-        difficulty->
+        difficulty->,
+        assets[]->,
+        "fileURL": files.asset->url
     }
 `;
 
@@ -51,15 +54,5 @@ export default async function ChallengePage({ params: { slug } }) {
     //     return <div>Loading...</div>;
     // }
     // return <ChallengeList challenges={challenges}></ChallengeList>;
-    return (
-        <div>
-            <PortableText
-                // Pass in block content straight from Sanity.io
-                value={challenge.description}
-                // Optionally override marks, decorators, blocks, etc. in a flat
-                // structure without doing any gymnastics
-                components={RichTextComponent}
-            />
-        </div>
-    );
+    return <ChallengePost challenge={challenge} />;
 }

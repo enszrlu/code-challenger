@@ -1,10 +1,9 @@
 import { groq } from 'next-sanity';
 import { client } from '../../../../lib/sanity.client';
-import PreviewSuspense from '@/components/PreviewSuspense';
-// import { previewData } from 'next/headers';
+import PreviewSuspense from '@/components/Preview/PreviewSuspense';
 import { draftMode } from 'next/headers';
 import ChallengeList from '@/components/ChallengeList';
-import PreviewChallenges from '@/components/PreviewChallenges';
+import PreviewChallenges from '@/components/Preview/PreviewChallenges';
 
 const query = groq`
     *[_type == "challenge"] {

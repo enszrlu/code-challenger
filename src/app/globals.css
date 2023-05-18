@@ -5,6 +5,9 @@
 /* to load animation for a specific spinner */
 @import '~spinners-react/lib/SpinnerCircular.css';
 
+/* Image Gallery Style */
+@import '~react-image-gallery/styles/css/image-gallery.css';
+
 @font-face {
     font-family: 'RobotoMono';
     src: url('../../public/fonts/RobotoMono-VariableFont_wght.ttf');

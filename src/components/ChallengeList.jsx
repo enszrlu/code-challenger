@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import Challenge from './Challenge';
-import ChallengeHeader from './ChallengeHeader';
+import Challenge from './ChallengeList/Challenge';
+import ChallengeHeader from './ChallengeList/ChallengeHeader';
 import { useState } from 'react';
 
 function ChallengeList({ challenges: challengesProps }) {
