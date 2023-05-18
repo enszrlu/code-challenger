@@ -5,6 +5,8 @@ import { draftMode } from 'next/headers';
 import ChallengeList from '@/components/ChallengeList';
 import PreviewChallenges from '@/components/Preview/PreviewChallenges';
 
+export const revalidate = 60;
+
 const query = groq`
     *[_type == "challenge"] {
         ...,
