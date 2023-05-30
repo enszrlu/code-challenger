@@ -8,30 +8,10 @@ function SolutionList({ solutions: solutionsProps, challengeList }) {
     const [sort, setSort] = useState('date desc');
     // Handle Sort for Solutions
     const handleSort = (sort) => {
-        // if (sort === 'date asc') {
-        //     setSolutions([...solutions].sort((a, b) => new Date(a.date) - new Date(b.date)));
-        //     setSort('date asc');
-        // } else if (sort === 'date desc') {
-        //     setSolutions([...solutions].sort((a, b) => new Date(b.date) - new Date(a.date)));
-        //     setSort('date desc');
-        // } else if (sort === 'challenge asc') {
-        //     setSolutions(
-        //         [...solutions].sort((a, b) =>
-        //             challengeList[a.challenge].title.localeCompare(challengeList[b.challenge].title)
-        //         )
-        //     );
-        //     setSort('challenge asc');
-        // } else if (sort === 'challenge desc') {
-        //     setSolutions(
-        //         [...solutions].sort((a, b) =>
-        //             challengeList[b.challenge].title.localeCompare(challengeList[a.challenge].title)
-        //         )
-        //     );
-        //     setSort('challenge desc');
-        // }
         sortSolutions(solutions, sort);
     };
 
+    // Sort Solutions
     const sortSolutions = (solutions, sort) => {
         if (sort === 'date asc') {
             setSolutions([...solutions].sort((a, b) => new Date(a.date) - new Date(b.date)));

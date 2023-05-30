@@ -36,7 +36,7 @@ const query = groq`
 
 export default async function SolutionPage({ params: { slug } }) {
     const endpoint =
-        (process.env.VERCEL_URL || 'http://127.0.0.1:3000') + '/api/solution?id=' + slug;
+        (process.env.NEXT_PUBLIC_URL || 'http://127.0.0.1:3000') + '/api/solution?id=' + slug;
 
     const response = await fetch(endpoint);
 
