@@ -34,7 +34,10 @@ function SolutionCard({ solution, challenge }) {
                         <p className="line-clamp-1" title={solution.user_name}>
                             {solution.user_name}
                         </p>
-                        <p className="text-sm font-light whitespace-nowrap">
+                        <p
+                            className="text-sm font-light whitespace-nowrap"
+                            suppressHydrationWarning={true}
+                        >
                             {new Date(solution.date).toLocaleString()}
                         </p>
                     </div>

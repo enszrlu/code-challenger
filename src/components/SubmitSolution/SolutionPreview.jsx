@@ -73,7 +73,9 @@ function SolutionPreview({ solution, challenge }) {
                         {/* User Name */}
                         <p className="font-bold">{solution.user_name}</p>
                         {/* Date Submitted */}
-                        <p>{new Date(solution.date).toLocaleString()}</p>
+                        <p suppressHydrationWarning={true}>
+                            {new Date(solution.date).toLocaleString()}
+                        </p>
                     </div>
                 </div>
                 {/* Image Gallery */}

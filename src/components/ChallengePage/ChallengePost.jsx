@@ -131,7 +131,10 @@ function ChallengePost({ challenge }) {
                                 <h1 className="text-2xl font-bold text-primary dark:text-secondary">
                                     {challenge.author.name}
                                 </h1>
-                                <p className="text-xl text-slate-500 dark:text-slate-400">
+                                <p
+                                    className="text-xl text-slate-500 dark:text-slate-400"
+                                    suppressHydrationWarning={true}
+                                >
                                     {new Date(challenge.publishedAt).toLocaleDateString()}
                                 </p>
                             </div>
