@@ -1,3 +1,5 @@
+const { red } = require('@mui/material/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: 'class',
@@ -12,7 +14,10 @@ module.exports = {
                 primary: '#26b4e3',
                 secondary: '#ab2bda',
                 html: '#21da27',
-                css: '#fb932b'
+                css: '#fb932b',
+                'google-red': '#DB4437',
+                'facebook-blue': '#4267B2',
+                'github-gray': '#333333'
             },
             fontFamily: {
                 RobotoMono: ['RobotoMono', 'monospace']

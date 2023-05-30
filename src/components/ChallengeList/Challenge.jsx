@@ -3,7 +3,7 @@ import React from 'react';
 import { urlFor } from '../../../lib/urlFor';
 import Category from './Category';
 import Difficulty from './Difficulty';
-import ClientSideRoute from './ClientSideRoute';
+import ClientSideRoute from '../ClientSideRoute';
 
 function Challenge({ challenge }) {
     return (

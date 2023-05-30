@@ -4,8 +4,6 @@ import { client } from '../../../../../lib/sanity.client';
 // import { draftMode } from 'next/headers';
 // import ChallengeList from '@/components/ChallengeList';
 // import PreviewChallenges from '@/components/PreviewChallenges';
-import { PortableText } from '@portabletext/react';
-import { RichTextComponent } from '@/components/ChallengePage/RichTextComponent';
 import ChallengePost from '@/components/ChallengePage/ChallengePost';
 
 const query = groq`

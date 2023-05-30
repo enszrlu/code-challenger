@@ -7,10 +7,7 @@ import { TypeAnimation } from 'react-type-animation';
 function Logo() {
     const router = useRouter();
     return (
-        <div
-            className="flex items-center  space-x-2  cursor-pointer w-fit"
-            onClick={() => router.push('/')}
-        >
+        <a className="flex items-center  space-x-2  cursor-pointer w-fit" href="/">
             <div className="relative h-12 w-12">
                 <Image src="/logos/icon.png" fill className="object-fill" alt="Logo"></Image>
             </div>
@@ -25,7 +22,7 @@ function Logo() {
                 repeat={false}
                 className="text-2xl "
             />
-        </div>
+        </a>
     );
 }
 

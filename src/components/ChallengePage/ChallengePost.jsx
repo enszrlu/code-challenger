@@ -7,10 +7,14 @@ import Category from '../ChallengeList/Category';
 import Difficulty from '../ChallengeList/Difficulty';
 import ImageGallery from 'react-image-gallery';
 import { urlFor } from '@/../lib/urlFor';
-
 import { BookOpenIcon, InboxArrowDownIcon } from '@heroicons/react/24/solid';
+import { auth } from '@/../lib/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Link from 'next/link';
 
 function ChallengePost({ challenge }) {
+    const [user, loading, error] = useAuthState(auth);
+
     let images = [];
 
     [
@@ -49,13 +53,27 @@ function ChallengePost({ challenge }) {
                     </div>
                     {/* Summary*/}
                     <p className="text-justify">{challenge.summary}</p>
-                    {/* Download Challenge Button */}
-                    <a
-                        href={challenge.fileURL}
-                        className="rounded-full bg-primary dark:bg-secondary p-4 text-white font-bold text-lg max-w-lg md:text-xl"
-                    >
-                        Download Challenge Starter
-                    </a>
+                    <div className="flex gap-5">
+                        {/* Download Challenge Button */}
+                        <Link
+                            href={challenge.fileURL}
+                            className="rounded-full bg-primary dark:bg-secondary p-4 text-white font-bold max-w-lg text-sm xl:text-lg text-center"
+                        >
+                            Download Starter
+                        </Link>
+                        {/* Submit Solution Button */}
+                        {user && (
+                            <Link
+                                href={{
+                                    pathname: '/submit-solution',
+                                    query: { challenge: challenge._id, state: challenge }
+                                }}
+                                className="rounded-full bg-primary dark:bg-secondary p-4 text-white font-bold max-w-lg text-sm xl:text-lg text-center"
+                            >
+                                Submit Solution
+                            </Link>
+                        )}
+                    </div>
                 </div>
                 {/* Image Gallery */}
                 <div className="w-fit max-w-[500px] h-fit">
@@ -71,7 +89,7 @@ function ChallengePost({ challenge }) {
                 <div className="lg:w-1/2 p-10 border-2 border-slate-200 rounded-3xl shadow-2xl dark:bg-slate-900">
                     <div className="flex items-center gap-5 mb-10">
                         <BookOpenIcon className="h-10 w-10 inline-block text-primary dark:text-secondary" />
-                        <h1 className="text-4xl font-bold text-primary dark:text-secondary">
+                        <h1 className="text-2xl md:text-4xl font-bold text-primary dark:text-secondary">
                             Challenge Description
                         </h1>
                     </div>
@@ -87,7 +105,7 @@ function ChallengePost({ challenge }) {
                     <div>
                         <div className="flex items-center gap-5 mb-10">
                             <InboxArrowDownIcon className="h-10 w-10 inline-block text-primary dark:text-secondary" />
-                            <h1 className="text-4xl font-bold text-primary dark:text-secondary">
+                            <h1 className="text-2xl md:text-4xl font-bold text-primary dark:text-secondary">
                                 Assets Provided
                             </h1>
                         </div>

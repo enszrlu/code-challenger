@@ -3,12 +3,13 @@ import React, { useEffect } from 'react';
 import Popover from '@mui/material/Popover';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 
-function ChallengeHeader({ handleSort, handleFilter, difficulties, categories }) {
+function SolutionsHeader({ handleSort, handleFilter, challenges }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [popoverType, setPopoverType] = React.useState(false);
-    const [sort, setSort] = React.useState('publishedAt desc');
-    const [filteredCategories, setFilteredCategories] = React.useState(categories);
-    const [filteredDifficulties, setFilteredDifficulties] = React.useState(difficulties);
+    const [sort, setSort] = React.useState('date desc');
+    const [filteredChallenges, setFilteredChallenges] = React.useState(
+        challenges.map((challenge) => challenge.id)
+    );
 
     // Handle Sort
     useEffect(() => {
@@ -17,8 +18,8 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
 
     // Handle Filter
     useEffect(() => {
-        handleFilter(filteredCategories, filteredDifficulties);
-    }, [filteredCategories, filteredDifficulties]);
+        handleFilter(filteredChallenges);
+    }, [filteredChallenges]);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -37,41 +38,25 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
     const id = open ? 'popover' : undefined;
 
     // Handle Category Checkbox Click
-    const handleCategoryCheckboxClick = (category) => {
-        // Check if the category is already in the filteredCategories array
-        const index = filteredCategories.indexOf(category);
+    const handleChallengeCheckboxClick = (challenge) => {
+        // Check if the challange is already in the filteredChallenges array
+        const index = filteredChallenges.indexOf(challenge);
 
         if (index === -1) {
-            // If the category is not in the array, add it
-            setFilteredCategories([...filteredCategories, category]);
+            // If the challange is not in the array, add it
+            setFilteredChallenges([...filteredChallenges, challenge]);
         } else {
-            // If the category is in the array, remove it
-            const newFilteredCategories = [...filteredCategories];
-            newFilteredCategories.splice(index, 1);
-            setFilteredCategories(newFilteredCategories);
-        }
-    };
-
-    // Handle Difficulty Checkbox Click
-    const handleDifficultyCheckboxClick = (difficulty) => {
-        // Check if the difficulty is already in the filteredDifficulties array
-        const index = filteredDifficulties.indexOf(difficulty);
-
-        if (index === -1) {
-            // If the difficulty is not in the array, add it
-            setFilteredDifficulties([...filteredDifficulties, difficulty]);
-        } else {
-            // If the difficulty is in the array, remove it
-            const newFilteredDifficulties = [...filteredDifficulties];
-            newFilteredDifficulties.splice(index, 1);
-            setFilteredDifficulties(newFilteredDifficulties);
+            // If the challange is in the array, remove it
+            const newFilteredChallenges = [...filteredChallenges];
+            newFilteredChallenges.splice(index, 1);
+            setFilteredChallenges(newFilteredChallenges);
         }
     };
 
     return (
         <div className="flex w-full px-auto sm:px-10 justify-between items-center border-2 bg-gray-100 dark:bg-gray-300">
             <div className="text-primary font-bold text-lg md:text-2xl dark:text-secondary">
-                CHALLENGES
+                SOLUTIONS
             </div>
             <div className="flex text-slate-800">
                 <div
@@ -116,30 +101,39 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
                         <div className="w-64 text-sm ">
                             <p
                                 className={`hover:scale-105 pl-3 py-3 cursor-pointer ${
-                                    sort === 'publishedAt desc' &&
+                                    sort === 'date desc' &&
                                     'text-primary font-bold text-lg border-l-4 border-primary'
                                 }`}
-                                onClick={() => setSort('publishedAt desc')}
+                                onClick={() => setSort('date desc')}
                             >
                                 Most recent
                             </p>
                             <p
                                 className={`hover:scale-105 pl-3 py-3 cursor-pointer ${
-                                    sort === 'difficulty.level asc' &&
+                                    sort === 'date asc' &&
                                     'text-primary font-bold text-lg border-l-4 border-primary'
                                 }`}
-                                onClick={() => setSort('difficulty.level asc')}
+                                onClick={() => setSort('date asc')}
                             >
-                                Difficulty (easier first)
+                                Oldest first
                             </p>
                             <p
                                 className={`hover:scale-105 pl-3 py-3 cursor-pointer ${
-                                    sort === 'difficulty.level desc' &&
+                                    sort === 'challenge asc' &&
                                     'text-primary font-bold text-lg border-l-4 border-primary'
                                 }`}
-                                onClick={() => setSort('difficulty.level desc')}
+                                onClick={() => setSort('challenge asc')}
                             >
-                                Difficulty (harder first)
+                                Challenge Name Asc
+                            </p>
+                            <p
+                                className={`hover:scale-105 pl-3 py-3 cursor-pointer ${
+                                    sort === 'challenge desc' &&
+                                    'text-primary font-bold text-lg border-l-4 border-primary'
+                                }`}
+                                onClick={() => setSort('challenge desc')}
+                            >
+                                Challenge Name Desc
                             </p>
                         </div>
                     </Popover>
@@ -161,46 +155,28 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
                         <div className="w-64 text-sm dark:bg-slate-600 dark:text-gray-200">
                             <div className="flex flex-col gap-3 border-b-4 py-5">
                                 <p className="font-bold text-xl border-b-2 text-slate-300 px-5">
-                                    Categories
+                                    Challenges
                                 </p>
-                                {categories.map((category) => (
-                                    <div key={category._id} className="flex items-center px-5">
+
+                                {challenges.map((challenge) => (
+                                    <div
+                                        key={challenge.id}
+                                        className="flex items-center px-5 w-full"
+                                    >
                                         <input
                                             type="checkbox"
-                                            checked={filteredCategories.includes(category)}
-                                            onChange={() => handleCategoryCheckboxClick(category)}
-                                            id={category._id}
-                                            className="h-6 w-6 accent-primary dark:accent-secondary cursor-pointer appearance-none border-4 border-primary dark:border-secondary focus:outline-none checked:bg-primary dark:checked:bg-secondary "
-                                        />
-                                        <label
-                                            htmlFor={category._id}
-                                            className="text-lg px-3 cursor-pointer"
-                                        >
-                                            {category.name}
-                                        </label>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="flex flex-col gap-3 border-b-4 py-5">
-                                <p className="font-bold text-xl border-b-2 text-slate-300 px-5">
-                                    Difficulties
-                                </p>
-                                {difficulties.map((difficulty) => (
-                                    <div key={difficulty._id} className="flex items-center px-5">
-                                        <input
-                                            type="checkbox"
-                                            checked={filteredDifficulties.includes(difficulty)}
+                                            checked={filteredChallenges.includes(challenge.id)}
                                             onChange={() =>
-                                                handleDifficultyCheckboxClick(difficulty)
+                                                handleChallengeCheckboxClick(challenge.id)
                                             }
-                                            id={difficulty._id}
+                                            id={challenge.id}
                                             className="h-6 w-6 accent-primary dark:accent-secondary cursor-pointer appearance-none border-4 border-primary dark:border-secondary focus:outline-none checked:bg-primary dark:checked:bg-secondary"
                                         />
                                         <label
-                                            htmlFor={difficulty._id}
-                                            className="text-lg px-3 cursor-pointer"
+                                            htmlFor={challenge.id}
+                                            className="text-lg px-3 cursor-pointer line-clamp-1 break-words w-full"
                                         >
-                                            {`${difficulty.level} - ${difficulty.name}`}
+                                            {challenge.title}
                                         </label>
                                     </div>
                                 ))}
@@ -213,4 +189,4 @@ function ChallengeHeader({ handleSort, handleFilter, difficulties, categories })
     );
 }
 
-export default ChallengeHeader;
+export default SolutionsHeader;
