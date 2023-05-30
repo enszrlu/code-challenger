@@ -31,6 +31,13 @@ function UserPanel() {
     const open = Boolean(anchorEl);
     const id = open ? id_default : undefined;
 
+    if (loading) return <div></div>;
+
+    if (error) {
+        console.log(error);
+        return <div></div>;
+    }
+
     return user ? (
         <div>
             {/* User Panel */}
