@@ -5,7 +5,12 @@ import urlSS from '@/../lib/urlScreenShot';
 export async function POST(request) {
     // Get the body of the request and parse it as JSON data then store it in a variable called data
     // const data = await request.body.json();
+
+    console.log('request', request);
+
     const data = await request.json();
+
+    console.log('data', data);
 
     const { error, desktop_screenshot, mobile_screenshot, tablet_screenshot } = await urlSS(
         data.live_url
