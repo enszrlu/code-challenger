@@ -60,7 +60,8 @@ function SubmitForm() {
         const JSONdata = JSON.stringify(data);
 
         // API endpoint where we send form data.
-        const endpoint = '/api/submit-solution';
+        const endpoint =
+            (process.env.VERCEL_URL || 'http://127.0.0.1:3000') + '/api/submit-solution';
 
         // Form the request for sending data to the server.
         const options = {

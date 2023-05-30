@@ -20,8 +20,7 @@ export default async function Solutions() {
     // add 5 second delay to simulate slow connection
     // await new Promise((resolve) => setTimeout(resolve, 5000));
 
-    const endpoint =
-        (process.env.NEXT_PUBLIC_BASE_URL || 'http://127.0.0.1:3000') + '/api/solutions';
+    const endpoint = (process.env.VERCEL_URL || 'http://127.0.0.1:3000') + '/api/solutions';
 
     const response = await fetch(endpoint, { cache: 'no-store' });
 
