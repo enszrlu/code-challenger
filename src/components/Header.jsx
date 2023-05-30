@@ -7,6 +7,7 @@ import HeaderNavigation from './Header/HeaderNavigation';
 import Logo from './Header/Logo';
 import UserPanel from './Header/UserPanel';
 import { useTheme } from 'next-themes';
+import { ClientOnly } from 'remix-utils';
 
 function Header() {
     const [isDarkMode, setDarkMode] = useState(null);
@@ -48,7 +49,9 @@ function Header() {
                             onChange={toggleDarkMode}
                             size={24}
                         />
-                        <UserPanel></UserPanel>
+                        <ClientOnly fallback={<div></div>}>
+                            {() => <UserPanel></UserPanel>}
+                        </ClientOnly>
                     </div>
                 </div>
                 {/* Navigation */}
