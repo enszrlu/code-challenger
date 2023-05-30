@@ -34,6 +34,7 @@
     "react-social-icons": "^5.15.0",
     "react-toggle-dark-mode": "^1.1.1",
     "react-type-animation": "^3.0.1",
+    "remix-utils": "^6.3.0",
     "sanity": "^3.10.0",
     "sanity-plugin-iframe-pane": "^2.3.0",
     "spinners-react": "^1.0.7",

@@ -11,6 +11,7 @@ import { BookOpenIcon, InboxArrowDownIcon } from '@heroicons/react/24/solid';
 import { auth } from '@/../lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
+import { ClientOnly } from 'remix-utils';
 
 function ChallengePost({ challenge }) {
     const [user, loading, error] = useAuthState(auth);
@@ -131,12 +132,14 @@ function ChallengePost({ challenge }) {
                                 <h1 className="text-2xl font-bold text-primary dark:text-secondary">
                                     {challenge.author.name}
                                 </h1>
-                                <p
-                                    className="text-xl text-slate-500 dark:text-slate-400"
-                                    suppressHydrationWarning={true}
-                                >
-                                    {new Date(challenge.publishedAt).toLocaleDateString()}
-                                </p>
+
+                                <ClientOnly fallback={<p>Loading</p>}>
+                                    {() => (
+                                        <p className="text-xl text-slate-500 dark:text-slate-400">
+                                            {new Date(challenge.publishedAt).toLocaleDateString()}
+                                        </p>
+                                    )}
+                                </ClientOnly>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import Link from 'next/link';
+import { ClientOnly } from 'remix-utils';
 
 function SolutionPreview({ solution, challenge }) {
     let images = [];
@@ -73,9 +74,10 @@ function SolutionPreview({ solution, challenge }) {
                         {/* User Name */}
                         <p className="font-bold">{solution.user_name}</p>
                         {/* Date Submitted */}
-                        <p suppressHydrationWarning={true}>
-                            {new Date(solution.date).toLocaleString()}
-                        </p>
+
+                        <ClientOnly fallback={<p>Loading</p>}>
+                            {() => <p>{new Date(solution.date).toLocaleString()}</p>}
+                        </ClientOnly>
                     </div>
                 </div>
                 {/* Image Gallery */}

@@ -1,5 +1,6 @@
 import ClientSideRoute from '../ClientSideRoute';
 import Image from 'next/image';
+import { ClientOnly } from 'remix-utils';
 
 function SolutionCard({ solution, challenge }) {
     return (
@@ -34,12 +35,16 @@ function SolutionCard({ solution, challenge }) {
                         <p className="line-clamp-1" title={solution.user_name}>
                             {solution.user_name}
                         </p>
-                        <p
-                            className="text-sm font-light whitespace-nowrap"
-                            suppressHydrationWarning={true}
-                        >
-                            {new Date(solution.date).toLocaleString()}
-                        </p>
+                        <ClientOnly fallback={<p>Loading</p>}>
+                            {() => (
+                                <p
+                                    className="text-sm font-light whitespace-nowrap"
+                                    // suppressHydrationWarning={true}
+                                >
+                                    {new Date(solution.date).toLocaleString()}
+                                </p>
+                            )}
+                        </ClientOnly>
                     </div>
                     {/* Summary */}
                     <p className="text-sm font-light line-clamp-5">{solution.summary}</p>
