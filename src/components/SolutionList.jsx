@@ -70,7 +70,7 @@ function SolutionList({ solutions: solutionsProps, challengeList }) {
                         ))
                     ) : (
                         <p className="text-2xl font-bold col-span-3 dark:text-gray-200">
-                            No challenges found, reset filters to see all challenges
+                            No solutions found, reset filters to see all challenges
                         </p>
                     )}
                 </div>
