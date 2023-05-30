@@ -56,7 +56,7 @@ function SolutionList({ solutions: solutionsProps, challengeList }) {
         }
     };
 
-    // Handle Filet for Solutions
+    // Handle Filter for Solutions
     const handleFilter = (challenges) => {
         const filteredSolutions = [...solutionsProps].filter((solution) =>
             challenges.includes(solution.challenge)
