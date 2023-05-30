@@ -4,7 +4,7 @@ const nextConfig = {
         domains: ['cdn.sanity.io', 'lh3.googleusercontent.com', 'avatars.githubusercontent.com']
     },
     experimental: {
-        serverComponentsExternalPackages: ['puppeteer']
+        serverComponentsExternalPackages: ['puppeteer', 'puppeteer-core']
     }
 };
 
