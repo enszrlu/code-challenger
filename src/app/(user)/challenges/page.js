@@ -30,6 +30,8 @@ export default async function Challenges() {
 
     const challenges = await client.fetch(query);
 
+    console.log('challenges: ', challenges.length);
+
     if (!challenges.length) {
         return <div>Loading...</div>;
     }

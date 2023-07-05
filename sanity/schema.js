@@ -6,5 +6,6 @@ import difficulty from './schemas/difficulty';
 import assets from './schemas/assets';
 
 export const schema = {
+    name: 'default',
     types: [challenge, author, category, blockContent, difficulty, assets]
 };

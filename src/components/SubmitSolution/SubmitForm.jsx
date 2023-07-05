@@ -102,8 +102,8 @@ function SubmitForm() {
             </div>
         );
 
-    if (error) {
-        redirect('/');
+    if (error || !user) {
+        redirect('/login');
     }
 
     if (solution) {
@@ -120,97 +120,91 @@ function SubmitForm() {
                 {/* Challenge Title */}
             </div>
 
-            {!solution ? (
-                /* Form */
-                <div className="sm:max-w-xl md:max-w-2xl lg:max-w-4xl p-5 mx-5 sm:mx-auto my-5 shadow-2xl rounded-2xl border-2 dark:bg-slate-900">
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-                        {/* Solution Title with input */}
-                        <label htmlFor="title" className="font-extrabold text-lg">
-                            Solution title <span className="text-red-600">*</span>
-                        </label>
-                        <p className="text-sm text-gray-500 italic font-extralight">
-                            Please include the name of the challenge and the technologies used.
-                        </p>
-                        <input
-                            type="text"
-                            id="title"
-                            name="title"
-                            required
-                            placeholder="e.g. Hulu Clone using React and Tailwind"
-                            maxlength={70}
-                            minLength={10}
-                            className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
-                        />
+            {/* Form */}
+            <div className="sm:max-w-xl md:max-w-2xl lg:max-w-4xl p-5 mx-5 sm:mx-auto my-5 shadow-2xl rounded-2xl border-2 dark:bg-slate-900">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+                    {/* Solution Title with input */}
+                    <label htmlFor="title" className="font-extrabold text-lg">
+                        Solution Title <span className="text-red-600">*</span>
+                    </label>
+                    <p className="text-sm text-gray-500 italic font-extralight">
+                        Please include the name of the challenge and the technologies used.
+                    </p>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        required
+                        placeholder="e.g. Hulu Clone using React and Tailwind"
+                        maxlength={70}
+                        minLength={10}
+                        className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
+                    />
 
-                        {/* Repository URL with input */}
-                        <label htmlFor="repo" className="mt-5 font-extrabold text-lg">
-                            Repository URL <span className="text-red-600">*</span>
-                        </label>
-                        <input
-                            type="url"
-                            id="repo"
-                            name="repo"
-                            required
-                            placeholder="Github, Gitlab or Bitbucket URL"
-                            className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
-                        />
+                    {/* Repository URL with input */}
+                    <label htmlFor="repo" className="mt-5 font-extrabold text-lg">
+                        Repository URL <span className="text-red-600">*</span>
+                    </label>
+                    <input
+                        type="url"
+                        id="repo"
+                        name="repo"
+                        required
+                        placeholder="Github, Gitlab or Bitbucket URL"
+                        className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
+                    />
 
-                        {/* Live Site URL with input */}
-                        <label htmlFor="live" className="mt-5 font-extrabold text-lg">
-                            Live Site URL <span className="text-red-600">*</span>
-                        </label>
-                        <p className="text-sm text-gray-500 italic font-extralight">
-                            Read more about{' '}
-                            <a
-                                href="https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe"
-                                className="font-bold dark:text-white underline"
-                                target="_blank"
-                            >
-                                recommended free hosting options.
-                            </a>
-                        </p>
-                        <input
-                            type="url"
-                            id="live"
-                            name="live"
-                            required
-                            placeholder="e.g. Github Pages URL"
-                            className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
-                        />
-
-                        {/* README for your solution */}
-                        <label htmlFor="readme" className="mt-5 font-extrabold text-lg">
-                            README - Summary for your solution{' '}
-                            <span className="text-red-600">*</span>
-                        </label>
-                        <p className="text-sm text-gray-500 italic font-extralight">
-                            Please include a summary of your solution. Challenges, what you learned,
-                            what you would do differently, etc.
-                        </p>
-                        <textarea
-                            id="readme"
-                            name="readme"
-                            rows="4"
-                            cols="50"
-                            placeholder="e.g. I learned how to use React Context and Styled Components. I would like to add a dark mode toggle."
-                            className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
-                            maxLength={500}
-                            minLength={20}
-                            required
-                        ></textarea>
-
-                        <button
-                            type="submit"
-                            className="rounded-full bg-primary dark:bg-secondary p-4 text-white font-bold max-w-lg text-sm xl:text-lg text-center mx-auto w-64 my-5"
+                    {/* Live Site URL with input */}
+                    <label htmlFor="live" className="mt-5 font-extrabold text-lg">
+                        Live Site URL <span className="text-red-600">*</span>
+                    </label>
+                    <p className="text-sm text-gray-500 italic font-extralight">
+                        Read more about{' '}
+                        <a
+                            href="https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe"
+                            className="font-bold dark:text-white underline"
+                            target="_blank"
                         >
-                            Submit
-                        </button>
-                    </form>
-                </div>
-            ) : (
-                /* Solution Preview */
-                <SolutionPreview solution={solution} />
-            )}
+                            recommended free hosting options.
+                        </a>
+                    </p>
+                    <input
+                        type="url"
+                        id="live"
+                        name="live"
+                        required
+                        placeholder="e.g. Github Pages URL"
+                        className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
+                    />
+
+                    {/* README for your solution */}
+                    <label htmlFor="readme" className="mt-5 font-extrabold text-lg">
+                        README - Summary for your solution <span className="text-red-600">*</span>
+                    </label>
+                    <p className="text-sm text-gray-500 italic font-extralight">
+                        Please include a summary of your solution. Challenges, what you learned,
+                        what you would do differently, etc.
+                    </p>
+                    <textarea
+                        id="readme"
+                        name="readme"
+                        rows="4"
+                        cols="50"
+                        placeholder="e.g. I learned how to use React Context and Styled Components. I would like to add a dark mode toggle."
+                        className="border-2 border-gray-300 dark:border-slate-700 focus:outline-primary dark:focus:outline-secondary rounded-md p-2"
+                        maxLength={500}
+                        minLength={20}
+                        required
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        className="rounded-full bg-primary dark:bg-secondary p-4 text-white font-bold max-w-lg text-sm xl:text-lg text-center mx-auto w-64 my-5"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
         </>
     );
 }

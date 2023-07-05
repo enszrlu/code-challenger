@@ -9,6 +9,8 @@
  *  }
  */
 
+// UPDATE ALSO QUILL TOOLBAR WHEN CHANGING THIS
+
 export default {
     title: 'Block Content',
     name: 'blockContent',
@@ -17,6 +19,7 @@ export default {
         {
             title: 'Block',
             type: 'block',
+            name: 'block',
             // Styles let you set what your user can mark up blocks with. These
             // correspond with HTML tags, but you can set any title or value
             // you want and decide how you want to deal with it where you want to

@@ -66,16 +66,20 @@ function ChallengeList({ challenges: challengesProps }) {
             );
         }
 
-        // filter by difficulty, check if challenge difficulty is in difficulties array
         if (difficulties.length > 0) {
-            newChallenges = [...newChallenges].filter((challenge) =>
-                difficulties.includes(challenge.difficulty)
-            );
+            const diffIds = difficulties.map((difficulty) => difficulty._id);
+            newChallenges = [...newChallenges].filter((challenge) => {
+                return diffIds.includes(challenge.difficulty._id);
+            });
         }
+
         newChallenges = sortChallenges(sort, newChallenges);
 
         setChallenges(newChallenges);
     };
+
+    console.log('challenges', challenges.length);
+    console.log('challengesProps', challengesProps.length);
 
     return (
         <div>
