@@ -10,6 +10,4 @@ export async function POST(request) {
 
     // Return data as a JSON response
     return NextResponse.json(response);
-
-    return NextResponse.error(error);
 }

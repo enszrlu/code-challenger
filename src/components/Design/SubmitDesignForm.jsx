@@ -34,6 +34,7 @@ function SubmitDesignForm({ difficultiesData, categoriesData, assetsData }) {
         focus: '#26b4e3'
     });
     const [author, setAuthor] = useState(null);
+    const [design, setDesign] = useState(null);
     // Animated Select
     const animatedComponents = makeAnimated();
 
@@ -101,6 +102,8 @@ function SubmitDesignForm({ difficultiesData, categoriesData, assetsData }) {
             // For example, you can upload the file or perform any other operations
         }
     }
+
+    // console.log(author);
 
     // Handles the submit event on form submit.
     // TODO: VALIDATE DATA
@@ -242,7 +245,7 @@ function SubmitDesignForm({ difficultiesData, categoriesData, assetsData }) {
         // return false;
 
         try {
-            // setLoadingSubmit(true);
+            setLoadingSubmit(true);
 
             // Send the form data to our forms API on Vercel and get a response.
             const response = await fetch(endpoint, options);
@@ -250,16 +253,16 @@ function SubmitDesignForm({ difficultiesData, categoriesData, assetsData }) {
             // Get the response data from server as JSON.
             result = await response.json();
             alert(`Challenge Submitted`);
-            redirect(`/solution/${result.slug}`);
-
-            // setLoadingSubmit(false);
+            // console.log('result:', result);
+            setDesign(result);
+            setLoadingSubmit(false);
         } catch (error) {
             // If server returns an error, that means the form failed.
+            console.log('error:', error);
             alert(`Error: ${error}`);
 
-            // setLoadingSubmit(false);
+            setLoadingSubmit(false);
         }
-
         // console.log('result:', result);
     };
 
@@ -274,9 +277,9 @@ function SubmitDesignForm({ difficultiesData, categoriesData, assetsData }) {
         redirect('/login');
     }
 
-    // if (solution) {
-    //     redirect(`/solution/${solution}`);
-    // }
+    if (design) {
+        redirect(`/challenge/${design.slug.current}`);
+    }
 
     return (
         <div className="sm:max-w-xl md:max-w-2xl lg:max-w-4xl p-5 mx-5 sm:mx-auto my-5 shadow-2xl rounded-2xl border-2 dark:bg-slate-900">
